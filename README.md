@@ -53,6 +53,7 @@
         
         az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 
+
 **Step 3:** Deploy application to Kubernetes
 
 - Using command line
@@ -61,34 +62,36 @@
       
 - Using yaml file
 Create a yaml file with name "candidateDeploy.yaml" as below
-      ---
-      kind: Deployment
-      apiVersion: extensions/v1beta1
-      metadata:
-        name: candidate
-        labels:
+
+    ---
+    kind: Deployment
+    apiVersion: extensions/v1beta1
+    metadata:
+      name: candidate
+      labels:
+        run: candidate
+      annotations:
+        deployment.kubernetes.io/revision: '1'
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
           run: candidate
-        annotations:
-          deployment.kubernetes.io/revision: '1'
-      spec:
-        replicas: 1
-        selector:
-          matchLabels:
+      template:
+        metadata:
+          creationTimestamp: 
+          labels:
             run: candidate
-        template:
-          metadata:
-            creationTimestamp: 
-            labels:
-              run: candidate
-          spec:
-            containers:
-            - name: candidate
-              image: osdcr.azurecr.io/candidateservice:v5
-              ports:
-              - containerPort: 80
-                protocol: TCP
-              imagePullPolicy: IfNotPresent
-            restartPolicy: Always
+        spec:
+          containers:
+          - name: candidate
+            image: osdcr.azurecr.io/candidateservice:v5
+            ports:
+            - containerPort: 80
+              protocol: TCP
+            imagePullPolicy: IfNotPresent
+          restartPolicy: Always
+
 Execute the below command to apply the yaml file
 
 		kubectl apply -f candidateDeploy.yaml
