@@ -119,15 +119,15 @@ Create a yaml file with name "candidateDeploy.yaml" as below
 
 Execute the below command to apply the yaml file
 
-		kubectl apply -f candidateDeploy.yaml
+	kubectl apply -f candidateDeploy.yaml
 
 Using below command to check it worked or not
 
-		kubectl get pods
+	kubectl get pods
         
 To expose the application to public internet, we use command: 
 		
-        kubectl expose deployment settingservice --type=LoadBalancer
+	kubectl expose deployment settingservice --type=LoadBalancer
 
 Using **--type=NodePort** for Local
 
