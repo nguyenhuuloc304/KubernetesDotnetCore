@@ -25,7 +25,7 @@
 
 - Build images for angular project
 
-In the root directory of the project. we create two file as below:
+In the root directory of the project. we create two files as below:
 
 **Dockerfile** file
 
