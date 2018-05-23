@@ -38,13 +38,14 @@
 
 	az aks create --resource-group {myResourceGroup} --name {myAKSCluster} --node-count 1 --generate-ssh-keys
 
--Connect with Kubectl
+- Connect with Kubectl
+
 
         az aks install-cli
         az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
         kubectl get nodes
 
--Configure ACR authentication
+- Configure ACR authentication
 
 		CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
         
