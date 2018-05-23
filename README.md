@@ -63,34 +63,34 @@
 - Using yaml file
 Create a yaml file with name "candidateDeploy.yaml" as below
 
-    ---
-    kind: Deployment
-    apiVersion: extensions/v1beta1
-    metadata:
-      name: candidate
-      labels:
-        run: candidate
-      annotations:
-        deployment.kubernetes.io/revision: '1'
-    spec:
-      replicas: 1
-      selector:
-        matchLabels:
-          run: candidate
-      template:
-        metadata:
-          creationTimestamp: 
-          labels:
-            run: candidate
-        spec:
-          containers:
-          - name: candidate
-            image: osdcr.azurecr.io/candidateservice:v5
-            ports:
-            - containerPort: 80
-              protocol: TCP
-            imagePullPolicy: IfNotPresent
-          restartPolicy: Always
+    	---
+    	kind: Deployment
+    	apiVersion: extensions/v1beta1
+    	metadata:
+      	name: candidate
+      	labels:
+        	run: candidate
+      	annotations:
+        	deployment.kubernetes.io/revision: '1'
+    	spec:
+      	replicas: 1
+      	selector:
+        	matchLabels:
+          	run: candidate
+      	template:
+        	metadata:
+          	creationTimestamp: 
+          	labels:
+            	run: candidate
+        	spec:
+          	containers:
+          	- name: candidate
+            	image: osdcr.azurecr.io/candidateservice:v5
+            	ports:
+            	- containerPort: 80
+              	protocol: TCP
+            	imagePullPolicy: IfNotPresent
+          	restartPolicy: Always
 
 Execute the below command to apply the yaml file
 
