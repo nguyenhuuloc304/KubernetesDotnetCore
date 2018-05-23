@@ -96,4 +96,9 @@ Execute the below command to apply the yaml file
 
 		kubectl apply -f candidateDeploy.yaml
 
+Using below command to check it worked or not
+
+		kubectl get pods
+        
+        
 Deploy sample .Net core solution to Local Kubernetes or AKS
