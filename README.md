@@ -36,7 +36,7 @@
 
 **Step 2:** Create Kubernetes Cluster
 
-		az aks create --resource-group {myResourceGroup} --name {myAKSCluster} --node-count 1 --generate-ssh-keys
+	az aks create --resource-group {myResourceGroup} --name {myAKSCluster} --node-count 1 --generate-ssh-keys
 
 -Connect with Kubectl
 
@@ -50,5 +50,5 @@
         
 		ACR_ID=$(az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv)
         
-        az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
+       	az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 Deploy sample .Net core solution to Local Kubernetes or AKS
