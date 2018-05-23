@@ -24,6 +24,7 @@
     	docker-compose build
 
 - Build images for angular project
+
 In the root directory of the project. we create two file as below:
 
 **Dockerfile** file
