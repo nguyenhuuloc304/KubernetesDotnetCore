@@ -19,9 +19,29 @@
 		az group create --name myResourceGroup --location eastus    
 		az acr create --resource-group myResourceGroup --name {acrName} --sku Basic
 
-- Build .Net core images
+- Build images for .Net core
 	
     	docker-compose build
+
+- Build images for angular project
+In the root directory of the project. we create two file as below:
+
+**Dockerfile** file
+
+    FROM nginx:latest
+    COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+    COPY ./dist/ /usr/share/nginx/html
+    
+and **nginx-custom.conf** file
+
+    server {
+      listen 80;
+      location / {
+        root /usr/share/nginx/html;
+        index index.html index.htm;
+        try_files $uri $uri/ /index.html =404;
+      }
+    }
 
 - Push images to ACR
 
