@@ -44,7 +44,7 @@ and **nginx-custom.conf** file
       }
     }
 
-To check images created successfuly or not, we use command
+- To check images created successfuly or not, we use command
 
 		docker images
 
