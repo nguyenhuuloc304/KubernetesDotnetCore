@@ -44,6 +44,10 @@ and **nginx-custom.conf** file
       }
     }
 
+To check images created successfuly or not, we use command
+
+		docker images
+
 - Push images to ACR
 
 		az login --tenant {tenantId}
