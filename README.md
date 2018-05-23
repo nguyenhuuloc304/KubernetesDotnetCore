@@ -13,7 +13,7 @@
 
 ### Step by step
 
-Step 1: Build docker images and push them to Azure Container Registry(ACR)
+**Step 1:** Build docker images and push them to Azure Container Registry(ACR)
 - Create Container Registry (contain images)
 
 		az group create --name myResourceGroup --location eastus    
@@ -34,5 +34,21 @@ Step 1: Build docker images and push them to Azure Container Registry(ACR)
       docker push osdcr.azurecr.io/candidateservice:v5
       or docker push osdcr.azurecr.io/candidateservice (default is use latest version)
 
+**Step 2:** Create Kubernetes Cluster
 
+		az aks create --resource-group {myResourceGroup} --name {myAKSCluster} --node-count 1 --generate-ssh-keys
+
+-Connect with Kubectl
+
+        az aks install-cli
+        az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+        kubectl get nodes
+
+-Configure ACR authentication
+
+		CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
+        
+		ACR_ID=$(az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv)
+        
+        az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 Deploy sample .Net core solution to Local Kubernetes or AKS
