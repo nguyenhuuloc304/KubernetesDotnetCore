@@ -51,5 +51,7 @@
         
 		ACR_ID=$(az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv)
         
-       	az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
+        az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
+
+
 Deploy sample .Net core solution to Local Kubernetes or AKS
