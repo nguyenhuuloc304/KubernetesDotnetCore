@@ -16,8 +16,7 @@
 Step 1: Build docker images and push them to Azure Container Registry(ACR)
 - Create Container Registry (contain images)
 
-		az group create --name myResourceGroup --location eastus
-    
+		az group create --name myResourceGroup --location eastus    
 		az acr create --resource-group myResourceGroup --name {acrName} --sku Basic
 
 - Build .Net core images
@@ -26,8 +25,8 @@ Step 1: Build docker images and push them to Azure Container Registry(ACR)
 
 - Push images to ACR
 
-		az acr login --name {ACRname}
-    
+		az login --tenant {tenantId}
+        az acr login --name {ACRname}                
     	docker push {ACRname}.azurecr.io/{imagename}
     
     Ex: 
