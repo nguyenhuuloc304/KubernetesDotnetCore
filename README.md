@@ -104,6 +104,6 @@ To expose the application to public internet, we use command:
 		
         kubectl expose deployment settingservice --type=LoadBalancer
 
-Using --type=NodePort for Local
+Using **--type=NodePort** for Local
 
 Deploy sample .Net core solution to Local Kubernetes or AKS
